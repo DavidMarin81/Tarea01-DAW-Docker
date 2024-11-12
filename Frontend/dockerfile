@@ -1,0 +1,12 @@
+# Usa una imagen oficial de Nginx para servir archivos estáticos
+FROM nginx:alpine
+
+# Copia los archivos del frontend (tu carpeta 'dist' o 'build') al contenedor
+# Asegúrate de haber compilado tus archivos si estás usando algo como React o Vue
+COPY . /usr/share/nginx/html
+
+# Expone el puerto 80
+EXPOSE 80
+
+# Comando para iniciar nginx
+CMD ["nginx", "-g", "daemon off;"]

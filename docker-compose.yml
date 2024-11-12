@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: davidmarin81/calculadora-backend
+    container_name: backend-container
+    ports:
+      - "8080:8080"
+
+  frontend:
+    image: davidmarin81/calculadora-frontend
+    container_name: frontend-container
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    environment:
+      - VUE_APP_API_URL=http://backend:8080
+
+networks:
+  default:
+    driver: bridge
